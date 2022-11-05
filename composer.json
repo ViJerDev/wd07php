@@ -1,0 +1,20 @@
+{
+    "name": "vijerdev/wd07php",
+    "description": "Wd07_project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ViJerDev",
+            "email": "shizajob@gmail.com"
+        }
+    ],
+    "require": {
+        "bramus/router": "~1.6",
+        "vlucas/phpdotenv": "^5.5",
+      "ext-pdo": "*"
+    }
+}
