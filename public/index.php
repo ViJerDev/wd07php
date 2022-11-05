@@ -9,4 +9,7 @@
     $dotenv->safeLoad();
 
     Debugger::pre(\App\Models\User::findById(1));
+Debugger::pre(\App\Models\User::findById(1));
+Debugger::pre(\App\Models\User::findById(1));
+Debugger::pre(\App\Models\User::findById(1));
 
