@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Core;
+    namespace App\Core;
 
-class Debugger
-{
-    public static function pre($var){
-        echo "<pre>";
-        print_r($var);
-        echo "</pre>";
+    class Debugger
+    {
+        public static function debug($var){
+            echo "<pre>";
+            print_r($var);
+            echo "</pre>";
+        }
     }
-}

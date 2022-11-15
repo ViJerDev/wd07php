@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use App\Core\BaseModel;
+    use App\Core\BaseModel;
 
-class User extends BaseModel
-{
+    class User extends BaseModel
+    {
 
-}
+
+
+    }

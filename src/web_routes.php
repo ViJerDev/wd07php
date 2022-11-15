@@ -1,19 +1,15 @@
 <?php
-use App\User;
-use Bramus\Router\Router;
 
-// Create Router instance
-$router = new Router();
-$router = new Router();
+    use App\Controllers\CatalogController;
+    use App\Controllers\SiteController;
+    use Bramus\Router\Router;
 
+    $router = new Router();
+    $router->get('/', SiteController::class.'@index');
+    $router->get('/catalog/{id}', CatalogController::class.'@product');
+    $router->get('/catalog', CatalogController::class.'@catalog');
+    $router->get('/cart', CatalogController::class.'@cart');
+    $router->get('/blog/{id}', function() {});
+    $router->get('/blog/', function() {});
 
-// Define routes
-$router->get('/', function() {
-    echo 'main';
-});
-$router->get('/id', function() {
-    echo 'main/id';
-});
-
-// Run it!
-$router->run();
+    $router->run();

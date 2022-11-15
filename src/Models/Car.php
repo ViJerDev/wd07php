@@ -4,7 +4,7 @@
 
     use App\Core\BaseModel;
 
-    class Post extends BaseModel
+    class Car extends BaseModel
     {
 
     }

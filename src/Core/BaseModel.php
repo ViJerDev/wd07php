@@ -1,31 +1,46 @@
 <?php
 
-namespace App\Core;
+    namespace App\Core;
 
-class BaseModel
-{
-    public static $table;
-    public function save(){
+    use PDO;
 
-    }
-    public static function findById($id){
-        $connection = DB::getConnection();
-        $tableName = static::getTabelName();
-        $sql = "select * from $tableName where id = $id";
-        $stmt = $connection->query($sql);
-        return $stmt->fetchObject(static::class);
+    class BaseModel
+    {
+        public static $table = null;
 
-    }
+        public function save(){
 
-    public static function getTabelName(){
-        if (static::$table !== null){
-            return static::$table;
         }
-        $className = static::class;
-        $className = explode('\\', $className);
-        $className = array_pop($className);
-        $className .= 's';
 
-        return strtolower($className);
+        public static function findById($id): static|null{
+            $connection = DB::getConnection();
+            $tableName = static::getTableName();
+            $sql = "select * from $tableName where id = :id";
+            $stmt = $connection->prepare($sql);
+            $stmt->execute(['id' => $id]);
+            if ($stmt->rowCount()){
+                return $stmt->fetchObject(static::class);
+            }
+           return null;
+        }
+
+        public static function all(){
+            $connection = DB::getConnection();
+            $tableName = static::getTableName();
+            $sql = "select * from $tableName";
+            $stmt = $connection->query($sql);
+            return $stmt->fetchAll(PDO::FETCH_CLASS, static::class);
+        }
+
+        public static function getTableName(){
+            if (static::$table !== null){
+                return static::$table;
+            }
+            $className = static::class;
+            $className = explode('\\', $className);
+            $className = array_pop($className);
+            $className .= 's';
+            return strtolower($className);
+        }
+
     }
-}
